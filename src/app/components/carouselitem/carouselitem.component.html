@@ -1,0 +1,14 @@
+<div class="cell">
+    <div class="cell-content" *ngIf="carouselItem">
+        <div class="img">
+            <img [src]="carouselItem?.imageUrl" [alt]="carouselItem?.title" />
+        </div>
+        <div class="cell-title">
+            <span>{{ carouselItem?.title }}</span>
+        </div>
+        <div class="cell-sub-title">
+            <a [href]="carouselItem?.subActionLink?.url">carouselItem?.subActionLink?.title</a>
+        </div>
+    </div>
+    <div *ngIf="!carouselItem">Loading...</div>
+</div>
