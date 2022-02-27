@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { CarouselItem } from '../model/carousel-item';
 declare const Impetus: any;
 
@@ -9,7 +9,7 @@ declare const Impetus: any;
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  pickerItems: CarouselItem[] = [];
+  @Input() slideItems: CarouselItem[] = [];
   index: number = 0;
   ACTIVE_CELL_CLASS: string = 'cell-active';
   animationTranslate: string = '';
@@ -18,8 +18,6 @@ export class CarouselComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.onInitCarouselItems();
-
     this.index = 2;
 
     this.initializeImpetus();
@@ -33,7 +31,7 @@ export class CarouselComponent implements OnInit {
 
         cells.forEach(e => {
           var index = e.attributes.getNamedItem('id')?.value;
-          var item = instance.pickerItems[Number(index)];
+          var item = instance.slideItems[Number(index)];
           var v1 = (e.clientLeft + x);
           item.ngStyleObject = {
             transform: 'translate3d(' + v1 + 'px,0px,0px)',
@@ -48,53 +46,13 @@ export class CarouselComponent implements OnInit {
   }
 
   rightEffect() {
-    let index = this.pickerItems.length - 1;
-    this.pickerItems.unshift(this.pickerItems.splice(index, 1)[0])
+    let index = this.slideItems.length - 1;
+    this.slideItems.unshift(this.slideItems.splice(index, 1)[0])
   }
 
   leftEffect() {
-    let index = this.pickerItems.length - 1;
-    this.pickerItems.unshift(this.pickerItems.splice(index, 1)[0])
-  }
-
-  onInitCarouselItems() {
-    this.pickerItems = [
-      {
-        title: 'Mobile internet',
-        imageUrl: 'https://onlinecms.mtn.co.za/sites/default/files/B2S%20Global%20Nav%20desktop_0.png',
-        clickUrl: '',
-        cssClass: ''
-      },
-      {
-        title: 'Home internet',
-        imageUrl: 'https://onlinecms.mtn.co.za/sites/default/files/B2S%20Global%20Nav%20desktop_0.png',
-        clickUrl: '',
-        cssClass: ''
-      },
-      {
-        title: 'Get a device',
-        imageUrl: 'https://onlinecms.mtn.co.za/sites/default/files/B2S%20Global%20Nav%20desktop_0.png',
-        clickUrl: '',
-        subActionLink: {
-          title: 'START HERE',
-          iconName: 'arrorw',
-          url: ''
-        },
-        cssClass: 'cell-active'
-      },
-      {
-        title: 'Add a phone-line',
-        imageUrl: 'https://onlinecms.mtn.co.za/sites/default/files/B2S%20Global%20Nav%20desktop_0.png',
-        clickUrl: '',
-        cssClass: ''
-      },
-      {
-        title: 'Upgrade',
-        imageUrl: 'https://onlinecms.mtn.co.za/sites/default/files/B2S%20Global%20Nav%20desktop_0.png',
-        clickUrl: '',
-        cssClass: ''
-      }
-    ]
+    let index = this.slideItems.length - 1;
+    this.slideItems.unshift(this.slideItems.splice(index, 1)[0])
   }
 
   onNextSlide() {
@@ -113,15 +71,15 @@ export class CarouselComponent implements OnInit {
 
     // clear the class
     this.onClearCurrentSelection();
-    this.pickerItems[2].cssClass = this.ACTIVE_CELL_CLASS
-    this.pickerItems[2].ngStyleObject = {
+    this.slideItems[2].cssClass = this.ACTIVE_CELL_CLASS
+    this.slideItems[2].ngStyleObject = {
       transform: 'scale(1.1) !important;'
     }
   }
 
   onClearCurrentSelection() {
     //find current
-    var current = this.pickerItems.find(x => {
+    var current = this.slideItems.find(x => {
       return x.cssClass === this.ACTIVE_CELL_CLASS
     });
 
@@ -130,8 +88,8 @@ export class CarouselComponent implements OnInit {
       current.cssClass = '';
 
     // reset index in case out of range
-    if (this.index > this.pickerItems.length - 1) this.index = 0
-    else if (this.index < 0) this.index = this.pickerItems.length - 1;
+    if (this.index > this.slideItems.length - 1) this.index = 0
+    else if (this.index < 0) this.index = this.slideItems.length - 1;
   }
 
   onSetStyle() {

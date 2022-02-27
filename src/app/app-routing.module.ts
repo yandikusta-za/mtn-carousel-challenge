@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CarouselComponent } from './components/carousel/carousel.component';
+import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 
 const routes: Routes = [
@@ -10,7 +10,7 @@ const routes: Routes = [
       children: [
           {
               path: '',
-              component: CarouselComponent
+              component: HomeComponent
           }
       ]
   }

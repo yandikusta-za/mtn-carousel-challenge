@@ -6,7 +6,7 @@
         <br />
         <h3>here to do?</h3>
     </div>
-    <div *ngFor="let item of pickerItems; let i = index" [class]="'cell ' + item.cssClass" [ngStyle]="item.ngStyleObject" [id]="i">
+    <div *ngFor="let item of slideItems; let i = index" [class]="'cell ' + item.cssClass" [ngStyle]="item.ngStyleObject" [id]="i">
         <div class="cell-content">
             <div class="img">
                 <img [src]="item.imageUrl" [alt]="item.title" />
