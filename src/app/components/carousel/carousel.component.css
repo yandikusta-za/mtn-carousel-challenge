@@ -8,7 +8,7 @@
 
   .top-title {
     background: transparent;
-    margin-left: 30%;
+    margin-left: 20%;
     font-size: 16px;
     position: absolute;
     margin-top: 2%;   
@@ -73,7 +73,7 @@
     justify-content: space-between;
     position: absolute;
     width: 50%;
-    margin-left: 25%;
+    margin-left: 10%;
   }
 
   .buttons div button {    

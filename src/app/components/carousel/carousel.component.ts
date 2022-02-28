@@ -24,20 +24,23 @@ export class CarouselComponent implements OnInit {
   }
   initializeImpetus() {
     const instance = this;
+    var container = document.querySelector('.main');
+
     this.impetus = new Impetus({
-      source: document.querySelector('.main'),
+      source: container,
+      boundeX: container?.clientWidth,
       update: function (x: any, y: any) {
         var cells = document.querySelectorAll('.cell');
-
+        
         cells.forEach(e => {
           var index = e.attributes.getNamedItem('id')?.value;
           var item = instance.slideItems[Number(index)];
-          var v1 = (e.clientLeft + x);
+          var v1 = (e.clientWidth + x);
           item.ngStyleObject = {
-            transform: 'translate3d(' + v1 + 'px,0px,0px)',
+            transform: 'translateX(' + v1 + 'px)',
             cursor: 'grab'
           };
-
+          
           // reset 
         });
 
@@ -73,7 +76,7 @@ export class CarouselComponent implements OnInit {
     this.onClearCurrentSelection();
     this.slideItems[2].cssClass = this.ACTIVE_CELL_CLASS
     this.slideItems[2].ngStyleObject = {
-      transform: 'scale(1.1) !important;'
+      transform: 'scale(1.2) !important;'
     }
   }
 

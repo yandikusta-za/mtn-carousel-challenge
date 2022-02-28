@@ -1,33 +1,40 @@
 .header {
-    display: flex;
     justify-content: flex-start;
-    align-items: center;
-    height: 80px;
-    width: 100%;
-    z-index: 99;
     background-color: #f5f5f5;
-    
     font-size: 1.4rem;
-    height: 7rem;
-    border-bottom: var(--line);
-
-    display: flex;
     align-items: center;
-    
+    overflow: hidden;    
+    height: 80px;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .header img {
     height: 100px;
     width: 100px;
-    margin-left: 25%;
+    margin-left: 20%;
+    position: absolute;    
+    margin-top: 17px;
 }
 
 ul {
+    flex: 0 0 40%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
     display: block;
+    margin-left: 25%;
 }
 
 ul li {
     display: inline-block;
+    padding-right: 8%;
 }
 
 ul:last-child {
@@ -40,3 +47,28 @@ ul li a, a:active {
     text-decoration: none;
     color: #0C0C0C;
 }
+
+.user-nav {
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-right: 13%;
+}
+
+.user-nav > * {    
+    padding: 0 2rem;
+    cursor: pointer;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
